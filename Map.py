@@ -8,12 +8,12 @@ from settings import *
 
 
 class Map:
-
     def __init__(self, surface):
+        self.player = None
         self.surface = surface
         self.hole_list: list = []
         self.box_list: list = []
-        self.player: object = Character(self.surface, 0, 0, CELL_WIDTH, CELL_HEIGHT, (0, 255, 0))
+        self.player = Character(self.surface, 0, 0, CELL_WIDTH, CELL_HEIGHT, (0, 255, 0))
         self.create_map()
 
     def create_map(self):
@@ -22,7 +22,7 @@ class Map:
                 if MAP[row][col] == 'x':
                     Wall(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (155, 155, 155))
                 elif MAP[row][col] == 'P':
-                    Character(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (0, 255, 0))
+                    self.player = Character(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (0, 255, 0))
                 elif MAP[row][col] == 'H':
                     hole = Hole(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (0, 0, 0))
                     self.hole_list.append(hole)
@@ -35,3 +35,9 @@ class Map:
 
     def update(self, event):
         self.player.move(event)
+        for box in self.box_list:
+            if pygame.Rect.colliderect(self.player.rect, box.rect):
+                box.move(event)
+                box.draw()
+        self.player.draw()
+
