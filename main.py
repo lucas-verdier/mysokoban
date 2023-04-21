@@ -22,7 +22,7 @@ class Game:
                 else:
                     self.map.update(event)
 
-            pygame.display.update()
+            pygame.display.flip()
             self.clock.tick(FPS)
 
 
