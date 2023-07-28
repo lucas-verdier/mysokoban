@@ -5,6 +5,7 @@ import pygame
 from Map import Map
 from settings import *
 
+background = pygame.image.load('textures/background.png')
 
 class Game:
     def __init__(self):
@@ -22,6 +23,8 @@ class Game:
                 else:
                     self.map.update(event)
 
+            self.screen.blit(background, (0, 0))
+            self.map.draw()
             pygame.display.flip()
             self.clock.tick(FPS)
 

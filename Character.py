@@ -32,9 +32,9 @@ class Character(Item):
     def get_image(self):
         return self.image
 
-    def draw_player(self):
-        pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))
-        self.surface.blit(self.get_image(), self.rect)
+    # def draw_player(self):
+    #     pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))
+    #     self.surface.blit(self.get_image(), self.rect)
 
     def move_player(self, event):
         if event.type == KEYDOWN:
@@ -60,3 +60,8 @@ class Character(Item):
     def previous_pos(self):
         self.pos_x = self.last_move_x
         self.pos_y = self.last_move_y
+
+    def draw(self):
+        pygame.draw.rect(self.surface,self.color, self.rect)
+        self.surface.blit(self.get_image(), self.rect)
+        

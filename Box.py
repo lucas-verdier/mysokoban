@@ -12,6 +12,11 @@ class Box(Item):
         self.image = pygame.transform.scale(pygame.image.load('textures/block.png'), (self.width, self.height))
         self.surface.blit(self.image, self.rect)
 
-    def draw_box(self):
-        pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))
+    # def draw_box(self):
+    #     pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))
+    #     self.surface.blit(self.image, self.rect)
+
+    def draw(self):
+        pygame.draw.rect(self.surface, self.color, self.rect)
         self.surface.blit(self.image, self.rect)
+        

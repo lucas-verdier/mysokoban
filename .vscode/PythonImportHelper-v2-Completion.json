@@ -1,0 +1,311 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "pygame",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygame",
+        "description": "pygame",
+        "detail": "pygame",
+        "documentation": {}
+    },
+    {
+        "label": "pygame.draw",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygame.draw",
+        "description": "pygame.draw",
+        "detail": "pygame.draw",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "importPath": "Item",
+        "description": "Item",
+        "isExtraImport": true,
+        "detail": "Item",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "importPath": "Item",
+        "description": "Item",
+        "isExtraImport": true,
+        "detail": "Item",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "importPath": "Item",
+        "description": "Item",
+        "isExtraImport": true,
+        "detail": "Item",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "importPath": "Item",
+        "description": "Item",
+        "isExtraImport": true,
+        "detail": "Item",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "Character",
+        "importPath": "Character",
+        "description": "Character",
+        "isExtraImport": true,
+        "detail": "Character",
+        "documentation": {}
+    },
+    {
+        "label": "Hole",
+        "importPath": "Hole",
+        "description": "Hole",
+        "isExtraImport": true,
+        "detail": "Hole",
+        "documentation": {}
+    },
+    {
+        "label": "Box",
+        "importPath": "Box",
+        "description": "Box",
+        "isExtraImport": true,
+        "detail": "Box",
+        "documentation": {}
+    },
+    {
+        "label": "Wall",
+        "importPath": "Wall",
+        "description": "Wall",
+        "isExtraImport": true,
+        "detail": "Wall",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Map",
+        "importPath": "Map",
+        "description": "Map",
+        "isExtraImport": true,
+        "detail": "Map",
+        "documentation": {}
+    },
+    {
+        "label": "Box",
+        "kind": 6,
+        "importPath": "Box",
+        "description": "Box",
+        "peekOfCode": "class Box(Item):\n    def __init__(self, surface, pos_x, pos_y, width, height, color):\n        super().__init__(surface, pos_x, pos_y, width, height, color)\n        self.rect = pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))\n        self.image = pygame.transform.scale(pygame.image.load('textures/block.png'), (self.width, self.height))\n        self.surface.blit(self.image, self.rect)\n    # def draw_box(self):\n    #     pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))\n    #     self.surface.blit(self.image, self.rect)\n    def draw(self):",
+        "detail": "Box",
+        "documentation": {}
+    },
+    {
+        "label": "Character",
+        "kind": 6,
+        "importPath": "Character",
+        "description": "Character",
+        "peekOfCode": "class Character(Item):\n    last_move_x = 0\n    last_move_y = 0\n    def __init__(self, surface, pos_x, pos_y, width, height, color):\n        super().__init__(surface, pos_x, pos_y, width, height, color)\n        self.rect = pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))\n        self.image = pygame.transform.scale(pygame.image.load('textures/link_f0.png'),\n                                            (self.width, self.height))\n    def set_image(self, direction):\n        if direction == 'face':",
+        "detail": "Character",
+        "documentation": {}
+    },
+    {
+        "label": "Hole",
+        "kind": 6,
+        "importPath": "Hole",
+        "description": "Hole",
+        "peekOfCode": "class Hole(Item):\n    def __init__(self, surface, pos_x, pos_y, width, height, color):\n        super().__init__(surface, pos_x, pos_y, width, height, color)\n        self.rect = pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))\n        self.image = pygame.transform.scale(pygame.image.load(os.path.join('textures', 'target4.png')),\n                                            (self.width, self.height))\n        self.surface.blit(self.image, self.rect)\n    def get_image(self):\n        return self.image\n    def draw(self):",
+        "detail": "Hole",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "kind": 6,
+        "importPath": "Item",
+        "description": "Item",
+        "peekOfCode": "class Item:\n    def __init__(self, surface, pos_x, pos_y, width, height, color):\n        self.surface = surface\n        self.pos_x = pos_x\n        self.pos_y = pos_y\n        self.width = width\n        self.height = height\n        self.color = color\n        self.rect = pygame.draw.rect(surface, color, (pos_x, pos_y, width, height))\n    def draw(self):",
+        "detail": "Item",
+        "documentation": {}
+    },
+    {
+        "label": "Map",
+        "kind": 6,
+        "importPath": "Map",
+        "description": "Map",
+        "peekOfCode": "class Map:\n    def __init__(self, surface):\n        self.player = None\n        self.surface = surface\n        self.hole_list: list = []\n        self.box_list: list = []\n        self.wall_list: list = []\n        self.player = Character(self.surface, 0, 0, CELL_WIDTH, CELL_HEIGHT, (0, 255, 0))\n        self.create_map()\n    def create_map(self):",
+        "detail": "Map",
+        "documentation": {}
+    },
+    {
+        "label": "Wall",
+        "kind": 6,
+        "importPath": "Wall",
+        "description": "Wall",
+        "peekOfCode": "class Wall(Item):\n    def __init__(self, surface, pos_x, pos_y, width, height, color):\n        super().__init__(surface, pos_x, pos_y, width, height, color)\n        self.rect = pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))\n        self.image = pygame.transform.scale(pygame.image.load('textures/tree5.png'), (self.width, self.height))\n        self.surface.blit(self.image, self.rect)\n    def get_image(self):\n        return self.image\n    def draw(self):\n        pygame.draw.rect(self.surface, self.color, self.rect)",
+        "detail": "Wall",
+        "documentation": {}
+    },
+    {
+        "label": "Game",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class Game:\n    def __init__(self):\n        pygame.init()\n        self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))\n        self.map = Map(self.screen)\n        self.clock = pygame.time.Clock()\n    def run(self):\n        while True:\n            for event in pygame.event.get():\n                if event.type == pygame.QUIT:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "background",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "background = pygame.image.load('textures/background.png')\nclass Game:\n    def __init__(self):\n        pygame.init()\n        self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))\n        self.map = Map(self.screen)\n        self.clock = pygame.time.Clock()\n    def run(self):\n        while True:\n            for event in pygame.event.get():",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "MAP",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "MAP = [\n    ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],\n    ['x', 'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'B', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', 'H', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'H', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', 'P', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "CELL_WIDTH",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "CELL_WIDTH = 64\nCELL_HEIGHT = 64\nMAP_WIDTH = len(MAP[0])\nMAP_HEIGHT = len(MAP)\nWINDOW_WIDTH = CELL_WIDTH * MAP_WIDTH\nWINDOW_HEIGHT = CELL_HEIGHT * MAP_HEIGHT\nFPS = 60\nTILESIZE = 64",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "CELL_HEIGHT",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "CELL_HEIGHT = 64\nMAP_WIDTH = len(MAP[0])\nMAP_HEIGHT = len(MAP)\nWINDOW_WIDTH = CELL_WIDTH * MAP_WIDTH\nWINDOW_HEIGHT = CELL_HEIGHT * MAP_HEIGHT\nFPS = 60\nTILESIZE = 64",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_WIDTH",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "MAP_WIDTH = len(MAP[0])\nMAP_HEIGHT = len(MAP)\nWINDOW_WIDTH = CELL_WIDTH * MAP_WIDTH\nWINDOW_HEIGHT = CELL_HEIGHT * MAP_HEIGHT\nFPS = 60\nTILESIZE = 64",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_HEIGHT",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "MAP_HEIGHT = len(MAP)\nWINDOW_WIDTH = CELL_WIDTH * MAP_WIDTH\nWINDOW_HEIGHT = CELL_HEIGHT * MAP_HEIGHT\nFPS = 60\nTILESIZE = 64",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "WINDOW_WIDTH",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "WINDOW_WIDTH = CELL_WIDTH * MAP_WIDTH\nWINDOW_HEIGHT = CELL_HEIGHT * MAP_HEIGHT\nFPS = 60\nTILESIZE = 64",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "WINDOW_HEIGHT",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "WINDOW_HEIGHT = CELL_HEIGHT * MAP_HEIGHT\nFPS = 60\nTILESIZE = 64",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "FPS",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "FPS = 60\nTILESIZE = 64",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "TILESIZE",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "TILESIZE = 64",
+        "detail": "settings",
+        "documentation": {}
+    }
+]

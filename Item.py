@@ -31,3 +31,6 @@ class Item:
             if event.key == K_DOWN:
                 self.rect = self.rect.move(0, CELL_HEIGHT)
                 self.pos_y += CELL_HEIGHT
+
+    def draw(self):
+        pygame.draw.rect(self.surface, self.color, self.rect)
