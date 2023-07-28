@@ -107,6 +107,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
         "label": "Character",
         "importPath": "Character",
         "description": "Character",
@@ -139,6 +147,14 @@
         "documentation": {}
     },
     {
+        "label": "WinScreen",
+        "importPath": "WinScreen",
+        "description": "WinScreen",
+        "isExtraImport": true,
+        "detail": "WinScreen",
+        "documentation": {}
+    },
+    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -160,7 +176,7 @@
         "kind": 6,
         "importPath": "Box",
         "description": "Box",
-        "peekOfCode": "class Box(Item):\n    def __init__(self, surface, pos_x, pos_y, width, height, color):\n        super().__init__(surface, pos_x, pos_y, width, height, color)\n        self.rect = pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))\n        self.image = pygame.transform.scale(pygame.image.load('textures/block.png'), (self.width, self.height))\n        self.surface.blit(self.image, self.rect)\n    # def draw_box(self):\n    #     pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))\n    #     self.surface.blit(self.image, self.rect)\n    def draw(self):",
+        "peekOfCode": "class Box(Item):\n    def __init__(self, surface, pos_x, pos_y, width, height, color):\n        super().__init__(surface, pos_x, pos_y, width, height, color)\n        self.rect = pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))\n        self.image = pygame.transform.scale(pygame.image.load('textures/box3.png'), (self.width, self.height))\n        self.surface.blit(self.image, self.rect)\n    def draw(self):\n        pygame.draw.rect(self.surface, self.color, self.rect)\n        self.surface.blit(self.image, self.rect)",
         "detail": "Box",
         "documentation": {}
     },
@@ -210,6 +226,15 @@
         "documentation": {}
     },
     {
+        "label": "WinScreen",
+        "kind": 6,
+        "importPath": "WinScreen",
+        "description": "WinScreen",
+        "peekOfCode": "class WinScreen:\n    def __init__(self):\n        pygame.init()\n        self.window_width = WINDOW_WIDTH\n        self.window_height =  WINDOW_HEIGHT\n        self.screen = pygame.display.set_mode((self.window_width, self.window_height))\n        self.font = pygame.font.Font(None, 36)\n        self.text_color = (255, 255, 255)\n        self.background_color = (0,0,0)\n        self.background_image = pygame.image.load('textures/background_win2.png').convert()",
+        "detail": "WinScreen",
+        "documentation": {}
+    },
+    {
         "label": "Game",
         "kind": 6,
         "importPath": "main",
@@ -232,7 +257,7 @@
         "kind": 5,
         "importPath": "settings",
         "description": "settings",
-        "peekOfCode": "MAP = [\n    ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],\n    ['x', 'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'B', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', 'H', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'H', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', 'P', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],",
+        "peekOfCode": "MAP = [\n    ['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'],\n    ['x', 'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', 'H', ' ', 'B', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', 'P', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],\n    ['x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x'],",
         "detail": "settings",
         "documentation": {}
     },

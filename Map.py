@@ -5,7 +5,7 @@ from Hole import Hole
 from Box import Box
 from Wall import Wall
 from settings import *
-
+from WinScreen import WinScreen
 
 class Map:
     def __init__(self, surface):
@@ -23,7 +23,7 @@ class Map:
         for row in range(MAP_HEIGHT):
             for col in range(MAP_WIDTH):
                 if MAP[col][row] == 'x':
-                    wall = Wall(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (255, 255, 255))
+                    wall = Wall(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (102,205,170))
                     
                     
                     self.wall_list.append(wall)
@@ -33,10 +33,10 @@ class Map:
                     hole = Hole(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (102,205,170))
                     self.hole_list.append(hole)
                 elif MAP[col][row] == 'B':
-                    box = Box(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (255, 255, 255))
+                    box = Box(self.surface, row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, (102,205,170))
                     self.box_list.append(box)
                 else:
-                    pygame.draw.rect(self.surface, (255, 0, 0),
+                    pygame.draw.rect(self.surface, (102,205,170),
                                      (row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT))
 
     def update(self, event):
@@ -60,7 +60,16 @@ class Map:
         self.player.draw()
 
         if len(self.hole_list) <= 0:
-            print('YOU WIN!!')
+   
+            victory_window = WinScreen()
+            victory_window.run()
+            self.player = None
+            self.hole_list: list = []
+            self.box_list: list = []
+            self.wall_list: list = []
+            self.create_map()
+  
+            
 
     def draw(self):
         for wall in self.wall_list:
@@ -73,3 +82,5 @@ class Map:
             box.draw()
 
         self.player.draw()
+        
+
