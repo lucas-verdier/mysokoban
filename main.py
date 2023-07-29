@@ -20,8 +20,15 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                    
                 else:
-                    self.map.update(event)
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_r:
+                            self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+                            self.map = Map(self.screen)
+                            self.clock = pygame.time.Clock()
+                        else:
+                            self.map.update(event)
 
             self.screen.blit(background, (0, 0))
             self.map.draw()

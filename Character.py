@@ -11,6 +11,10 @@ class Character(Item):
 
     def __init__(self, surface, pos_x, pos_y, width, height, color):
         super().__init__(surface, pos_x, pos_y, width, height, color)
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.width = width
+        self.height = height
         self.rect = pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))
         self.image = pygame.transform.scale(pygame.image.load('textures/link_f0.png'),
                                             (self.width, self.height))
@@ -32,11 +36,41 @@ class Character(Item):
     def get_image(self):
         return self.image
 
-    # def draw_player(self):
-    #     pygame.draw.rect(self.surface, self.color, (self.pos_x, self.pos_y, self.width, self.height))
-    #     self.surface.blit(self.get_image(), self.rect)
 
-    def move_player(self, event):
+    def move_player(self, event, walls, box):
+        next_x = self.pos_x 
+        next_y = self.pos_y
+        print('box pos', box.pos_x, box.pos_y)
+        print('player pos', self.pos_x, self.pos_y)
+
+        
+        if event.type == KEYDOWN:
+            if event.key == K_LEFT:
+                next_x -= CELL_WIDTH
+            if event.key == K_RIGHT:
+                next_x += CELL_WIDTH
+            if event.key == K_UP:
+                next_y -= CELL_HEIGHT
+            if event.key == K_DOWN:
+                next_y += CELL_HEIGHT
+                
+
+        next_player_rect = pygame.Rect(next_x, next_y, self.width, self.height)
+        
+
+        for wall in walls:
+            # # if box.rect.colliderect(wall.rect):
+            # if next_player_rect.colliderect(box.rect):
+            #     print('box collision')
+            #     return
+        
+            if next_player_rect.colliderect(wall.rect):
+                return
+        
+
+            
+
+
         if event.type == KEYDOWN:
             self.last_move_x = self.pos_x
             self.last_move_y = self.pos_y
@@ -56,6 +90,7 @@ class Character(Item):
                 self.rect = self.rect.move(0, CELL_HEIGHT)
                 self.pos_y += CELL_HEIGHT
                 self.set_image('face')
+                
 
     def previous_pos(self):
         self.pos_x = self.last_move_x

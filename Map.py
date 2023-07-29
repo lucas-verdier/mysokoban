@@ -40,26 +40,28 @@ class Map:
                                      (row * CELL_WIDTH, col * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT))
 
     def update(self, event):
-        # print(len(self.hole_list))
-        self.player.move_player(event)
-        print(self.player.last_move_x)
+ 
+        score = 0
         
-        
-        for wall in self.wall_list:
-            if pygame.Rect.colliderect(self.player.rect, wall.rect):
-                self.player.previous_pos()
 
         for box in self.box_list:
+            self.player.move_player(event, self.wall_list, box)
+
             for hole in self.hole_list:
+                # print(box.rect, hole.rect)
                 if pygame.Rect.colliderect(box.rect, hole.rect):
-                    self.hole_list.remove(hole)
+           
+                    score += 1
+                    break
+                    
             if pygame.Rect.colliderect(self.player.rect, box.rect):
-                box.move(event)
+                box.move(event, self.wall_list, 'box')
                 box.draw()
 
         self.player.draw()
 
-        if len(self.hole_list) <= 0:
+
+        if len(self.hole_list) == score:
    
             victory_window = WinScreen()
             victory_window.run()
@@ -82,5 +84,7 @@ class Map:
             box.draw()
 
         self.player.draw()
+        
+        
         
 
